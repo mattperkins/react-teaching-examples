@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React props and spreadOp</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    const goofStyle = {
+        color: "green"
+    }
+
+    const Bottom = ({top, goof})=> <div style={{fontStyle: "italic", fontSize: 12}}><h1>{top}</h1><p style={goofStyle}>{goof}</p></div>
+
+    const Middle = (props) => <div style={{color: "red", textAlign: "center"}}><Bottom {...props}/></div>
+    
+    class Top extends React.Component{
+        render(){
+            return (
+                <div style={{border: "1px solid #ccc", width: "300px"}}><Middle {...this.props}/></div>
+            )
+        }
+    }
+
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(
+        <div>
+        <Top 
+            top={Math.random() * 10} 
+            goof="I am Lemon"
+        />
+        </div>
+        , embed)
+
+</script>
+
+
+
+</body>
+
+</html>

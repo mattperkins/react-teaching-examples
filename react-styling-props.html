@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React styling props</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f1f1;
+            padding: 10px;
+            color: #222;
+            border: 1px solid #111;
+            width: 350px;
+            height: 350px;
+            margin: 50px auto;
+            text-align: center;
+            box-shadow: 1px 3px 3px #111;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    const AppStyle = {
+        color: "#666",
+        padding: 3
+    }
+    
+    const App = ({msg}) => <h1 style={AppStyle}>{msg}</h1>
+    
+    const Kd = ({children}) => <h1 style={{color: "#999"}}>{children}</h1>
+
+    const AL = ({col}) => <h1 style={{color: col}}>{col}</h1>
+
+    class QQ extends React.Component{
+        render(){
+          const propStyle = {
+            color: this.props.col
+         }
+            return (
+                <h1 style={propStyle}>{this.props.col}</h1>
+            )
+        }
+    }
+
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(
+        <div>
+        <App msg="I am a prop"/>
+        <Kd>props.children</Kd>
+        <QQ col="#ccc"/>
+        <AL col="#ff6663"/>
+        </div>
+        , embed)
+
+</script>
+
+
+
+</body>
+
+</html>
