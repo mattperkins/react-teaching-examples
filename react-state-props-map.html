@@ -42,10 +42,25 @@
 
     <script type="text/babel">
 
+    const Lemon = ({todos})=>{
+       return (
+            <ul>{
+                todos.map(todo => {
+                    return <li todo={todo} key={todo.id}>{todo.title}</li>
+                })
+            }</ul>
+            )
+    }
+
     class Counter extends React.Component{
         state = {
             time: 0,
-            bgColor: "#f7f7f7"
+            bgColor: "#f7f7f7",
+            todos: [
+                        { id: 1, title: "Walk the dog"},
+                        { id: 2, title: "Walk the cat"},
+                        { id: 3, title: "Walk the goldfish"}
+                    ]
         }
 
         countUp = () => {
@@ -72,17 +87,25 @@
                 height: 300,
                 backgroundColor: this.state.bgColor
             }
+            
             return(
+                    <div>
+                    
             <div style={swatch}>
 
                <button onClick={this.countUp}>+</button>
                <button onClick={this.countDown}>-</button>
 
                <h1>{this.state.time}</h1>
-               
+                
             </div>
+
+                <Lemon todos={this.state.todos} />
+
+                </div>
     )}}
-    
+
+
     const embed = document.getElementById("app")    
 
     ReactDOM.render(

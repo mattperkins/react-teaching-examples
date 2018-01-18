@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React CDN HTML Boilerplate</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    {/* text prop receives state from class component */}
+    {/* lime initialises a prop to be used in the class component */}
+    const Lemon = ({text, lime})=>(
+        <div>
+        {/* position the prop *receiving state* in the layout */}
+        <p>{text}</p>
+        {/* position the prop in the layout */}
+        <p>{lime}</p>
+
+        </div>
+        )
+
+    
+    class ClassComp extends React.Component{
+        // doesn't require keyword 'this' as not inside constructor function
+            state={
+                text: 'hello',
+                msg:"this, this, this"
+            }
+        
+
+        render() {
+            return (
+                <div>                    
+                <p>{this.state.msg}</p>
+
+                {/* prop text sends state to functional component, Lemon */}
+                <Lemon text={this.state.text} />
+                
+                {/* uses 'layout' prop from functional component */}
+                <Lemon lime="I am lime" />
+                {/* resuses the functional component prop for customising the positional element */}
+                <Lemon lime="I am not lime" />
+
+                {/* creates a placeholder layout positional prop */}
+                <p>{this.props.fruit}</p>
+                
+                </div>
+            )
+        }
+    }
+
+    
+
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(
+        <div>
+        {/* receives placeholder layout positional prop and expects content */}
+        <ClassComp fruit="I am melon" />
+        </div>
+        , embed)
+
+</script>
+
+
+
+</body>
+
+</html>
