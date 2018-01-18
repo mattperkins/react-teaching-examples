@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>React CDN HTML Boilerplate</title>
+    <title>React passing state and props</title>
 
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -56,12 +56,12 @@
                 <div>                    
                 <p>{this.state.msg}</p>
 
-                {/* prop text sends state to functional component, Lemon */}
+                {/* prop text sends state to functional component */}
                 <Lemon text={this.state.text} />
                 
                 {/* uses 'layout' prop from functional component */}
                 <Lemon lime="I am lime" />
-                {/* resuses the functional component prop for customising the positional element */}
+                {/* reuses the functional component prop for customising the positional element */}
                 <Lemon lime="I am not lime" />
 
                 {/* creates a placeholder layout positional prop */}
@@ -71,8 +71,6 @@
             )
         }
     }
-
-    
 
     const embed = document.getElementById("app")    
 
