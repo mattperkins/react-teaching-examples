@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>React CDN HTML Boilerplate</title>
+    <title>React default props and onClick handler</title>
 
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
     <style>
-        body{
+        body {
             font-family: sans-serif;
             background: #f1f1f1;
             display: flex;
@@ -20,13 +20,6 @@
             align-items: center;
             text-align: center;
             padding: 50px;
-        }
-        input{
-            width: 200px;
-            padding: 10px;
-            text-align: center;
-            font-size: 1rem;
-            border: 0px solid #ccc;
         }
     </style>
 </head>
@@ -37,51 +30,43 @@
 
     <script type="text/babel">
 
-    
-     
-    const Form = ({propz}) => {
-    return (
-    <div>
-        <p>{propz}</p>
-    </div>
-    )
-    }
-     
-
     class App extends React.Component{
 
         static defaultProps = { 
-            title: "You can change this text",
+            title: "Default props",
+            btn: "Press for an alert",
+            msg: "I am a message",
+            link: "http://google.com"
         }
 
         state={
-            todo: ''
+            msg: 'Click here',
+            para: ''
+        }
+        
+        clickState = () => {
+            this.setState({
+                msg: 'Thank you',
+                para: 'I am revealed!'
+            })
         }
 
-        addToList = (e) => {
-            this.setState({
-                todo: e.target.value
-            })
+        clickHandler(){
+            alert('I am an alert')
         }
 
         render() {
             
             return (
-                <div>  
-                    <form>
-                
-                        <input 
-                            type="text" 
-                            placeholder={this.props.title} 
-                            onChange={this.addToList} 
-                            value={this.state.todo} />
+                <div>   
+                    <p>{this.props.title}</p>
+                    <p>{this.props.msg}</p>
+                    <p><a href={this.props.link}>Link</a></p>
 
-                    </form>
-                    <p>{this.state.todo}</p>
-                    
-                    {/* ================================= */}
-                    <Form propz={this.state.todo } />
-
+                    <button onClick={this.clickHandler}>{this.props.btn}</button>
+                    <br /><br />
+                    <button onClick={this.clickState}>{this.state.msg}</button>
+                    <p>{this.state.para}</p>
                 </div>
             )
         }
