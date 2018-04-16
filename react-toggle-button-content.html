@@ -32,46 +32,46 @@
 
 
     
-const baseStyle = { fontFamily: 'sans-serif'}
+    const baseStyle = { fontFamily: 'sans-serif'}
 
-class ClassComp extends React.Component {
+    class ClassComp extends React.Component {
 
-state = { 
- showPersons: false
-}
+    state = { 
+    showPersons: false
+    }
 
-toggleMe = () => {
- const doesToggle = this.state.showPersons
- this.setState({
-  showPersons : !doesToggle
- })
-}
+    toggleMe = () => {
+    const doesToggle = this.state.showPersons
+    this.setState({
+    showPersons : !doesToggle
+    })
+    }
 
-render() {
+    render() {
 
 
-return (
-<div style={baseStyle}>
- 
- 
-<button onClick={this.toggleMe}>Toggle Content</button>
- 
- 
- { this.state.showPersons === true ?
- 
+    return (
+        <div style={baseStyle}>
+        
+        
+        <button onClick={this.toggleMe}>Toggle Content</button>
+        
+        
+        { this.state.showPersons === true ?
+        
 
- <div>
- <p>Content is visible</p>
- </div>
- 
- 
- : null }
- {/* <p>or alternative jsx content</p> */}
-  
-</div>
-)
-}
-}
+        <div>
+        <p>Content is visible</p>
+        </div>
+        
+        
+        : null }
+        {/* <p>or alternative jsx content</p> */}
+        
+        </div>
+    )
+    }
+    }
 
         
     const embed = document.getElementById("app")    
