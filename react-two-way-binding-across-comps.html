@@ -39,7 +39,7 @@
 
     
      
-    const Form = ({propz}) => {
+    const Lemon = ({propz}) => {
     return (
     <div>
         <p>{propz}</p>
@@ -78,10 +78,8 @@
 
                     </form>
                     <p>{this.state.todo}</p>
-                    
-                    {/* ================================= */}
-                    <Form propz={this.state.todo } />
 
+                    <Lemon propz={this.state.todo } />
                 </div>
             )
         }
