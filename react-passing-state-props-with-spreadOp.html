@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React-passing-state-props-with-spreadOp</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    class ClassComp extends React.Component{
+        constructor(props){
+            super(props)
+            this.state = {
+                ...props // items: this.props.items
+            }
+        }
+
+        render() {
+            return (
+                <div>
+                    {this.state.items.map(item => <p key={item}>{item}</p>)}
+                </div>
+            )
+        }
+    }
+    
+
+    const FuncComp = () => <div><ClassComp items={[
+        "Lemon", "Lime", "Pear", "Banana"
+    ]}/></div>
+
+        
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(
+        <div>
+        <FuncComp />
+        </div>
+        , embed)
+
+</script>
+
+
+
+</body>
+
+</html>
