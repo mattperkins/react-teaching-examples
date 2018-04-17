@@ -21,6 +21,10 @@
             text-align: center;
             padding: 50px;
         }
+        p{
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -40,25 +44,25 @@
 
         render() {
             return (
-                <div>
+                <React.Fragment>
                     {this.state.items.map(item => <p key={item}>{item}</p>)}
-                </div>
+                </React.Fragment>
             )
         }
     }
     
 
-    const FuncComp = () => <div><ClassComp items={[
-        "Lemon", "Lime", "Pear", "Banana"
-    ]}/></div>
+    const FuncComp = () => <React.Fragment><ClassComp items={[
+    "Lemon", "Lime", "Pear", "Banana"                   
+    ]}/></React.Fragment>
 
         
     const embed = document.getElementById("app")    
 
     ReactDOM.render(
-        <div>
-        <FuncComp />
-        </div>
+        <React.Fragment>
+            <FuncComp />    
+        </React.Fragment>
         , embed)
 
 </script>
