@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Super simple toggle</title>
+
+    <script src="https://unpkg.com/react@16.3.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    class Toggle extends React.Component {
+        state={
+            on: false
+        }
+
+        toggleMe = ()=>{
+            this.setState({
+                on: !this.state.on
+            })
+        }
+      render() {
+        return (
+          <div>
+
+            <button onClick={this.toggleMe}>Show/Hide</button>
+
+            {this.state.on && this.props.children}
+            
+          </div>
+        )
+      }
+    }
+    
+    class ClassComp extends React.Component{
+
+        render() {
+            return (
+                <div>
+                <Toggle>
+                    <h1>I am the toggleking</h1>
+                </Toggle>
+                </div>
+            )
+        }
+    }
+        
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(
+        <div>
+        <ClassComp />
+        </div>
+        , embed)
+
+</script>
+
+
+
+</body>
+
+</html>

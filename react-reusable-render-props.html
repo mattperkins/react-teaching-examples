@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Render Props</title>
+
+    <script src="https://unpkg.com/react@16.3.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+        }
+        button{
+            margin: 50px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+    class Toggle extends React.Component {
+        state={
+            on: false
+        }
+
+        toggleMe = ()=>{
+            this.setState({
+                on: !this.state.on
+            })
+        }
+      render() {
+          const {lemonPops} = this.props
+        return (
+          <div>
+
+            {lemonPops({on: this.state.on, toggleMe: this.toggleMe })}
+            
+          </div>
+        )
+      }
+    }
+    
+    class ClassComp extends React.Component{
+
+        render() {
+            return (
+                <div>
+                
+                <Toggle 
+                    lemonPops={({on, toggleMe})=>(
+                        <div>
+                            <button onClick={toggleMe}>Show/Hide</button>
+
+                            {on && <h1>I am alive!!!!</h1>}
+                        </div>
+                    )} 
+                />
+
+                <Toggle 
+                    lemonPops={({on, toggleMe})=>(
+                        <div>
+                            <button onClick={toggleMe}>I am resuable :)</button>
+
+                            {on && <h1>Reusable render props button in action</h1>}
+                        </div>
+                    )} 
+                /> 
+
+                </div>
+            )
+        }
+    }
+        
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(
+        <div>
+        <ClassComp />
+        </div>
+        , embed)
+
+</script>
+
+
+
+</body>
+
+</html>
