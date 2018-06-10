@@ -34,6 +34,29 @@
 
     <script type="text/babel">
 
+    class AlternativeToggle extends React.Component {
+        state={
+            on: false
+        }
+
+        toggler = ()=>{
+            this.setState({
+                on: !this.state.on
+            })
+        }
+      render() {
+        return this.props.children({
+            on: this.state.on,
+            toggler: this.toggler
+        })
+      }
+    }
+
+
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \\
+
+
     class Toggle extends React.Component {
         state={
             on: false
@@ -56,12 +79,37 @@
       }
     }
     
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \\
+
+    
     class ClassComp extends React.Component{
 
         render() {
             return (
                 <div>
-                
+
+
+
+                <AlternativeToggle>
+                {/* on is a true or false prop and the toggle is a function to change it */}
+                    {({ on, toggler }) => (
+                        <div>
+                            
+                            <button onClick={toggler}>Press or dont</button> 
+                            
+                            {on && <h1>I have appeared!</h1>}  
+                             
+                             {/* could be the following: <SomeComponent on={on}/> */}
+
+                        </div>
+                    )}
+                </AlternativeToggle>
+
+
+
+
+
                 <Toggle 
                     lemonPops={({on, toggleMe})=>(
                         <div>
@@ -72,15 +120,18 @@
                     )} 
                 />
 
+
                 <Toggle 
                     lemonPops={({on, toggleMe})=>(
                         <div>
-                            <button onClick={toggleMe}>I am resuable :)</button>
+                            <button onClick={toggleMe}>I am resuable</button>
 
                             {on && <h1>Reusable render props button in action</h1>}
                         </div>
                     )} 
                 /> 
+
+
 
                 </div>
             )
