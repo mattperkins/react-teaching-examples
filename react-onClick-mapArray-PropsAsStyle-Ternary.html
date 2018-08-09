@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>React onClick and Map over an Array</title>
+
+ <script src="https://unpkg.com/react@16.3.2/umd/react.development.js"></script>
+ <script src="https://unpkg.com/react-dom@16.3.2/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+ <style>
+  body {
+   font-family: sans-serif;
+   background: #f1f1f1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   padding: 50px;
+  }
+ </style>
+</head>
+
+<body>
+
+ <div id="app"></div>
+
+ <script type="text/babel">
+
+    const CompOne = ({style, type}) => <p style={style}>
+      {type}
+    </p>
+  
+    const CompTwo = ({msg, clicker}) => <h3 onClick={clicker}>{msg}</h3>
+
+    class App extends React.Component {
+     state={
+      name: true,
+      msg: true
+     }
+     handleClick = () => {
+      this.setState({
+       name: !this.state.name,
+      })
+     }
+     handleClickProp = () => {
+      this.setState({
+        msg: !this.state.msg
+      })
+     }
+     render() {
+      let users = ['Map', 'Over', 'Array']
+      const msg1 = 'click handler passed as props'
+      const msg2 = 'state passed as props'
+      const MsgComp = () => <p>{msg2}</p>
+      return (
+       <div>
+        <p onClick={this.handleClick}>
+         {this.state.name ? 'Click' : 'Click again'}
+        </p>
+
+        <div>{ users.map( (user,i) => <p key={i}>{user}</p> ) }</div>
+
+        <CompOne style={{color: 'red'}} type={'Style passed as props'}/>
+        <CompOne style={{color: 'blue'}} type={'Style passed as props'}/>
+
+        <CompTwo clicker={this.handleClickProp} msg={this.state.msg ? msg1 : <MsgComp /> } />
+
+       </div>
+      )
+    }}
+        
+    const embed = document.getElementById("app")    
+
+    ReactDOM.render(<App />, embed)
+
+</script>
+
+
+
+</body>
+
+</html>
