@@ -6,7 +6,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
  <title>React onClick and Map over an Array</title>
-
+ <style>
+  body {
+   user-select: none
+  }
+ </style>
  <script src="https://unpkg.com/react@16.3.2/umd/react.development.js"></script>
  <script src="https://unpkg.com/react-dom@16.3.2/umd/react-dom.development.js"></script>
  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
@@ -34,7 +38,7 @@
       {type}
     </p>
   
-    const CompTwo = ({msg, clicker}) => <h3 onClick={clicker}>{msg}</h3>
+    const CompTwo = ({msg, clicker}) => <h3 style={{cursor: 'pointer'}} onClick={clicker}>{msg}</h3>
 
     class App extends React.Component {
      state={
@@ -58,7 +62,7 @@
       const MsgComp = () => <p>{msg2}</p>
       return (
        <div>
-        <p onClick={this.handleClick}>
+        <p style={{cursor: 'pointer'}} onClick={this.handleClick}>
          {this.state.name ? 'Click' : 'Click again'}
         </p>
 
@@ -68,6 +72,7 @@
         <CompOne style={{color: 'blue'}} type={'Style passed as props'}/>
 
         <CompTwo clicker={this.handleClickProp} msg={this.state.msg ? msg1 : <MsgComp /> } />
+         
 
        </div>
       )
