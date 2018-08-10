@@ -34,10 +34,23 @@
 
 
     class FormComp extends React.Component{
+     state = {
+      name: 'Fred'
+     }
+     handleChange = (e) => {
+      this.setState({
+       name: e.target.value
+      })
+     } 
+     handleSubmit = (e) => {
+      e.preventDefault()
+      console.log('Form submitted', this.state.name)
+      } 
         render() {
             return (
-                <form>
-                 <input type="text" />
+                <form onSubmit={this.handleSubmit}>
+                <p>{this.state.name}</p>
+                 <input type="text" onChange={this.handleChange} />
                  <button>Submit</button>
                 </form>
             )
