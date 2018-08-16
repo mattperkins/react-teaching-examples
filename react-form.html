@@ -46,14 +46,14 @@
       e.preventDefault()
       console.log('Form submitted', this.state.name)
       } 
-        render() {
-            return (
-                <form onSubmit={this.handleSubmit}>
-                <p>{this.state.name}</p>
-                 <input type="text" onChange={this.handleChange} />
-                 <button>Submit</button>
-                </form>
-            )
+render() {
+  return (
+    <form onSubmit={this.handleSubmit}>
+    <p>{this.state.name}</p>
+        <input type="text" onChange={this.handleChange} />
+        <button>Submit</button>
+    </form>
+)
         }
     }
         
