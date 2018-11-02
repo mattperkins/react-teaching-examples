@@ -33,12 +33,12 @@
     const RandomCircle = ({bgColor}) => { 
         var circleStyle = {
                 padding: 10,
-                margin:20,
+                margin:15,
                 display: "inline-block",
                 backgroundColor: bgColor,
-                // borderRadius: "50%",
-                width: 100,
-                height: 100
+                borderRadius: "50%",
+                width: 20,
+                height: 20
             }
         return (
             <div style={circleStyle}></div> 
@@ -57,14 +57,9 @@
     }
 
     class Circle extends React.Component{
-        constructor(props){
-            super(props)            
-        }
-
-        render() {
-         
+        
+        render() {         
             return (
-                
                 <div>   
                 {renderData}
                 </div>
@@ -72,11 +67,10 @@
         }
     }
 
-    
     const embed = document.getElementById("app")    
     ReactDOM.render(
         <div>
-        <Circle />
+            <Circle />
         </div>
         , embed)
 
