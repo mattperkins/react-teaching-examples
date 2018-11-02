@@ -35,10 +35,9 @@ const users = [
     { name: "Sandy" },
     { name: "Bob" },
 ]
-const conditionalUser = users.map( (user, i) => user.name == "Sandy" ? <p key={i}>{user.name}</p> : null
+const conditionalUser = users.map( (user, i) => user.name == "Fred" ? <p key={i}>{user.name}</p> : null
 )
-    class ClassComp extends React.Component{
-
+class ClassComp extends React.Component{
 render() {
     return (
         <div>
