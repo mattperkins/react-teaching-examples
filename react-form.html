@@ -30,12 +30,10 @@
 
  <script type="text/babel">
 
-
-
-
     class FormComp extends React.Component{
      state = {
-      name: 'Fred'
+      name: '',
+      msg: ''
      }
      handleChange = (e) => {
       this.setState({
@@ -44,7 +42,8 @@
      } 
      handleSubmit = (e) => {
       e.preventDefault()
-      console.log('Form submitted', this.state.name)
+        console.log('Form submitted', this.state.name)
+            this.setState({ msg: this.state.name })
       } 
 render() {
   return (
@@ -52,6 +51,7 @@ render() {
     <p>{this.state.name}</p>
         <input type="text" onChange={this.handleChange} />
         <button>Submit</button>
+        <p style={{color: 'red'}}>{this.state.msg}</p>
     </form>
 )
         }
