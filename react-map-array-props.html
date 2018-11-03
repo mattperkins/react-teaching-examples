@@ -29,21 +29,24 @@
     <div id="app"></div>
 
 <script type="text/babel">
+
 const List = ({users}) => {
-const style = { padding: 10, fontSize: 36 }
-return <div>
-    {users.map(item => (
-        <div style={style} key={item.id}>{item.name}</div>
-    ))}
-</div>
+    const style = { padding: 10, fontSize: 36 }
+        return <div>
+            {users.map(item => (
+            <div style={style} key={item.id}>
+                {item.name}
+            </div>
+        ))}
+    </div>
 }
     class ClassComp extends React.Component{
-    state={
-        users: [
-            {name: 'Fred', id: 1},
-            {name: 'Sandy', id: 2}
-        ]
-    }
+        state={
+            users: [
+                {name: 'Fred', id: 1},
+                {name: 'Sandy', id: 2}
+            ]
+        }
     render() {
         return (
             <List users={this.state.users} />
