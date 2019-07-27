@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>React CDN HTML Boilerplate</title>
 
-    <script src="https://unpkg.com/react@16.6.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.6.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@16.8.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
 
     <style>
-        body {
-            font-family: sans-serif;
-            background: #f1f1f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 50px;
-        }
+      body {
+        font-family: sans-serif;
+        background: #f1f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 50px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="app"></div>
 
     <script type="text/babel">
+      const FuncComp = () => (
+        <div>
+          <h3>hello,world</h3>
+        </div>
+      );
 
-
-    const FuncComp = () => <div><h1>Hello, World!</h1></div>
-
-
-    class ClassComp extends React.Component{
-        constructor(props){
-            super(props)
-            
+      class ClassComp extends React.Component {
+        constructor(props) {
+          super(props);
         }
 
         render() {
-            return (
-                <div>
-                <FuncComp />
-                </div>
-            )
+          return (
+            <>
+              <FuncComp />
+            </>
+          );
         }
-    }
-        
-    const embed = document.getElementById("app")    
+      }
 
-    ReactDOM.render(
+      const embed = document.getElementById("app");
+
+      ReactDOM.render(
         <div>
-        <ClassComp />
-        </div>
-        , embed)
-
-</script>
-
-
-
-</body>
-
+          <ClassComp />
+        </div>,
+        embed
+      );
+    </script>
+  </body>
 </html>
